@@ -50,22 +50,23 @@ set timeoutlen=1000
 set ttimeoutlen=0
 
 " ---  MAP  --- "
+"let mapleader = ","
 nmap <Bslash> :NERDTreeToggle<CR>
 nmap <C-F> :CtrlP<CR>
 nmap <C-N> :tabnew<CR>
 "nmap <C-Tab> :gt<CR>
 "nmap <C-S-Tab> :gT<CR>
-nnoremap <C-Left> <C-W><C-H>
-nnoremap <C-Right> <C-W><C-L>
-nnoremap <C-Up> <C-W><C-K>
-nnoremap <C-Down> <C-W><C-J>
+"nmap <Left> gT<CR>
+"nmap <Right> gt<CR>
+"nmap <Up> <nop>
+"nmap <Down> <nop>
 
 " ---  PLUGIN's CONFIG --- "
 let g:move_key_modifier = 'C'
 
 let g:phpunit_testroot = 'tests/'
 let g:phpunit_srcroot = ''
-let g:phpunit_bin = 'phpunit "--link app --link db --link cache" --configuration="phpunit.xml" '
+let g:phpunit_bin = 'phpunit "--link $(docker ps -qf "name=laravel.*") --link db --link cache" --configuration="phpunit.xml" '
 
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled = 1
