@@ -14,10 +14,12 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Bundle 'jiangmiao/auto-pairs'
 
 " --- Plugin in test  --- "
-"Plugin 'Valloric/YouCompleteMe' " Tenho que utilizar o Python/Python3 e usar o ctags
 "Plugin 'shawncplus/phpcomplete.vim'
+"Bundle 'stephpy/vim-php-cs-fixer'
+"Plugin 'Valloric/YouCompleteMe' " Tenho que utilizar o Python/Python3 e usar o ctags
 "Bundle 'Shougo/vimproc', {'do' : 'make'}
 "Bundle 'Shougo/unite.vim'
 "Bundle 'm2mdas/phpcomplete-extended'
@@ -50,7 +52,7 @@ set timeoutlen=1000
 set ttimeoutlen=0
 
 " ---  MAP  --- "
-"let mapleader = ","
+let mapleader = ","
 nmap <Bslash> :NERDTreeToggle<CR>
 nmap <C-F> :CtrlP<CR>
 nmap <C-N> :tabnew<CR>
@@ -64,6 +66,7 @@ nmap <C-N> :tabnew<CR>
 " ---  PLUGIN's CONFIG --- "
 let g:move_key_modifier = 'C'
 
+let g:phpunit_options = ['--tap']
 let g:phpunit_testroot = 'tests/'
 let g:phpunit_srcroot = ''
 let g:phpunit_bin = 'phpunit "--link $(docker ps -qf "name=laravel.*") --link db --link cache" --configuration="phpunit.xml" '
@@ -78,30 +81,3 @@ let g:user_emmet_expandabbr_key = '<C-e>'
 let g:use_emmet_complete_tag = 1
 
 let g:ctrlp_custom_ignore = 'vendor/'
-
-" ========================== Auto-closing of brackets ==========================
-" Coisa do JonathanHR
-inoremap {<CR> {<C-o>o}<C-o>O
-let s:pairs={ '<': '>', '{': '}', '[': ']', '(': ')', '«': '»', '„': '“', '“': '”', '‘': '’', }
-
-call map(copy(s:pairs), 'extend(s:pairs, {v:val : v:key}, "keep")')
-function! InsertPair(left, ...)
-  let rlist=reverse(map(split(a:left, '\zs'), 'get(s:pairs, v:val, v:val)'))
-  let opts=get(a:000, 0, {})
-  let start   = get(opts, 'start',   '')
-  let lmiddle = get(opts, 'lmiddle', '')
-  let rmiddle = get(opts, 'rmiddle', '')
-  let end     = get(opts, 'end',     '')
-  let prefix  = get(opts, 'prefix',  '')
-  let start.=prefix
-  let rmiddle.=prefix
-  let left=start.a:left.lmiddle
-  let right=rmiddle.join(rlist, '').end
-  let moves=repeat("\<Left>", len(split(right, '\zs')))
-  return left.right.moves
-endfunction
-noremap! <expr> {   InsertPair('{')
-noremap! <expr> [   InsertPair('[')
-noremap! <expr> (   InsertPair('(')
-noremap! <expr> <   InsertPair('<')
-noremap! <expr> \"   InsertPair('"')
