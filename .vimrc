@@ -15,6 +15,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
 Bundle 'jiangmiao/auto-pairs'
+Plugin 'chriskempson/base16-vim'
 
 " --- Plugin in test  --- "
 "Plugin 'shawncplus/phpcomplete.vim'
@@ -31,6 +32,7 @@ call vundle#end()
 
 " --- GLOBAL --- "
 set encoding=utf-8
+set termguicolors
 set t_Co=256
 set mouse=a
 set number
@@ -40,7 +42,8 @@ set nowrap
 set autoread
 set scrolloff=200 "Posicionamento de scroll
 
-colorscheme desert
+syntax on
+colorscheme base16-classic-dark
 
 set expandtab
 set smartindent
@@ -52,6 +55,7 @@ set timeoutlen=1000
 set ttimeoutlen=0
 
 " ---  MAP  --- "
+"let base16colorspace=256
 let mapleader = ","
 nmap <Bslash> :NERDTreeToggle<CR>
 nmap <C-F> :CtrlP<CR>
