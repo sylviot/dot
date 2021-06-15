@@ -3,32 +3,18 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 
-Bundle 'matze/vim-move'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+"Bundle 'matze/vim-move'
+"Plugin 'editorconfig/editorconfig-vim'
+"Plugin 'scrooloose/nerdtree'
+"Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'mattn/emmet-vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-surround'
-Bundle 'jiangmiao/auto-pairs'
-Plugin 'chriskempson/base16-vim'
-
-" -- Plugin for PHP development -- "
-"Plugin 'c9s/phpunit.vim'
-
-" --- Plugin in test  --- "
-"Plugin 'shawncplus/phpcomplete.vim'
-"Bundle 'stephpy/vim-php-cs-fixer'
-Plugin 'Valloric/YouCompleteMe', {'do' : '~/.vim/bundle/YouCompleteMe/install.py --omnisharp-completer'} " Tenho que utilizar o Python/Python3 e usar o ctags
-"Bundle 'Shougo/vimproc', {'do' : 'make'}
-"Bundle 'Shougo/unite.vim'
-"Bundle 'm2mdas/phpcomplete-extended'
-
-"Bundle 'jistr/vim-nerdtree-tabs'
-
+"Plugin 'vim-airline/vim-airline-themes'
+"Plugin 'mattn/emmet-vim'
+"Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-surround'
+"Bundle 'jiangmiao/auto-pairs'
+"Plugin 'chriskempson/base16-vim'
 
 call vundle#end()
 
@@ -45,7 +31,7 @@ set autoread
 set scrolloff=200 "Posicionamento de scroll
 
 syntax on
-colorscheme base16-atelier-forest
+"colorscheme base16-atelier-forest
 
 set expandtab
 set smartindent
@@ -70,21 +56,15 @@ nmap <C-N> :tabnew<CR>
 "nmap <Down> <nop>
 
 autocmd BufNewFile,BufRead *.cshtml set syntax=html
+
 " ---  PLUGIN's CONFIG --- "
-let g:move_key_modifier = 'C'
 
-"let g:phpunit_options = ['--tap']
-"let g:phpunit_testroot = 'tests/'
-"let g:phpunit_srcroot = ''
-"let g:phpunit_bin = 'phpunit "--link $(docker ps -qf "name=laravel.*") --link db --link cache" --configuration="phpunit.xml" '
-
+"### AIRLine ###"
 let g:airline_theme='dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline_powerline_fonts = 1
 
-let g:user_emmet_expandabbr_key = '<C-e>'
-let g:use_emmet_complete_tag = 1
-
+"### ControlP ###"
 let g:ctrlp_custom_ignore = 'bin\|obj\|node_modules'
